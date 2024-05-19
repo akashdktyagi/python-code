@@ -6,6 +6,17 @@ class Grocery:
     def update_amount(self, amount):
         self.amount += amount
 
+# class GroceryNewWay:
+#     def __init__(self):
+#         pass
+#
+#     def add_name_and_amount(self,name,amount):
+#         self.name=name
+#         self.amount=amount
+#
+#     def update_amount(self, amount):
+#         self.amount += amount
+
 class Supermarket:
     def __init__(self):
         self.storage = []
