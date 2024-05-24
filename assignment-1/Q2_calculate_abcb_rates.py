@@ -1,26 +1,41 @@
 
 # NOT WORKING
 
-def calculate(abcb_rates,amount):
-    effective_rate=0
-    remaining_amount=amount
-    for k,v in abcb_rates.items():
+def calculate(abcb_rates, amount):
+    effective_rate = 0
+    remaining_amount = amount
+    for k, v in abcb_rates.items():
         lower_limit = int(k.split("-")[0].split("$")[1])
         upper_limit = int(k.split("-")[1].split("$")[1])
-        temp_amount = upper_limit-lower_limit
-        if (remaining_amount<upper_limit):
-            effective_rate = effective_rate + remaining_amount/amount * v
+        temp_amount = min(remaining_amount, upper_limit - lower_limit)
+        effective_rate += (temp_amount / amount) * v
+        remaining_amount -= temp_amount
+        if remaining_amount <= 0:
             break
-        else:
-            effective_rate = effective_rate + (temp_amount / amount) * v
-            remaining_amount = remaining_amount - temp_amount
-
-    if remaining_amount>0:
-        effective_rate = effective_rate + (remaining_amount / amount) * 0.05
-
-
-
+    if remaining_amount > 0:
+        effective_rate += (remaining_amount / amount) * 0.05
     return effective_rate
+
+# def calculate(abcb_rates,amount):
+#     effective_rate=0
+#     remaining_amount=amount
+#     for k,v in abcb_rates.items():
+#         lower_limit = int(k.split("-")[0].split("$")[1])
+#         upper_limit = int(k.split("-")[1].split("$")[1])
+#         temp_amount = upper_limit-lower_limit
+#         if (remaining_amount<upper_limit):
+#             effective_rate = effective_rate + remaining_amount/amount * v
+#             break
+#         else:
+#             effective_rate = effective_rate + (temp_amount / amount) * v
+#             remaining_amount = remaining_amount - temp_amount
+#
+#     if remaining_amount>0:
+#         effective_rate = effective_rate + (remaining_amount / amount) * 0.05
+#
+#
+#
+#     return effective_rate
 
 if __name__ == '__main__':
     # abcb_rates = {
