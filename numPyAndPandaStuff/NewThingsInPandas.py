@@ -8,6 +8,7 @@ if __name__=="__main__":
          }
     )
 
+
     print(df)
     df['last name'].drop([1,2],inplace=True)
 
